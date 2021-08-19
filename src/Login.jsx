@@ -3,14 +3,14 @@ import Button from "./Button";
 import "./Login.scss";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
-import {FaSpinner} from 'react-icons/fa'
+import { FaSpinner } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import Results from "./Results";
 
 export default function Login() {
   const [startDate, setStartDate] = useState(new Date());
   const [Reg, setReg] = useState(null);
-  
+
   const [Data, setData] = useState(null);
 
   return (
@@ -50,33 +50,34 @@ export default function Login() {
                 onChange={(date) => setStartDate(date)}
               /> */}
             </div>
-            <div style={{display:"flex",justifyContent:"center"}}>
-            {Data=="Loading"?<div className="spinner-3"></div>:
-              <Button
-                onClick={() => {
-                  setData("Loading")
-                  fetch(
-                    `https://script.google.com/macros/s/AKfycbzN-sMsycPpUfLciXfPe9ZB50Mevf_F4pNAxBtcv9Turq-AsklRr-DswrJF8bEfuN9wLg/exec?id=${Reg}`
-                  )
-                    .then(e=>e.json())
-                    .then((e) => {
-                      setData(e);
-                    })
-                    .catch((e) => {
-                      setData(null)
-                      alert("Error....");
-                    });
-                }}
-              >
-                
-                Check Result
-              </Button>}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              {Data == "Loading" ? (
+                <div className="spinner-3"></div>
+              ) : (
+                <Button
+                  onClick={() => {
+                    setData("Loading");
+                    fetch(
+                      `https://script.google.com/macros/s/AKfycbzN-sMsycPpUfLciXfPe9ZB50Mevf_F4pNAxBtcv9Turq-AsklRr-DswrJF8bEfuN9wLg/exec?id=${Reg}`
+                    )
+                      .then((e) => e.json())
+                      .then((e) => {
+                        setData(e);
+                      })
+                      .catch((e) => {
+                        setData(null);
+                        alert("Error....");
+                      });
+                  }}
+                >
+                  Check Result
+                </Button>
+              )}
             </div>
           </div>
         </div>
       </div>
-    {Data&&Data!=="Loading"&&<Results reset={setData} data={Data}/>}
-    
+      {Data && Data !== "Loading" && <Results reset={setData} data={Data} />}
     </div>
   );
 }

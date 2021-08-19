@@ -52,7 +52,7 @@ export default function Results({ data, reset }) {
               src="https://zuwasc.com/wp-content/uploads/2021/07/cropped-ZAE__1__page-0001__3_-removebg-preview-270x270.png"
               alt=""
             />
-            <div>Zainul Ulama Women's Arts & Sharee'th college</div>
+            <div>Zainul Ulama Women's Arts & <br/>Sharee'th college</div>
           </div>
 
           <b>Examination Board</b>
